@@ -6,7 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<!-- <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css" /> -->
-		<link rel="stylesheet" href="/bower_components/metro-bootstrap/dist/css/metro-bootstrap.min.css" />
+		<link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css" />
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
@@ -14,7 +14,7 @@
 		<div class="container">
 
 			<div class="row text-center">
-				<h3><strong>WFVB Grill</strong></h3>		
+				<h3><strong>WFVB Grillkasse</strong></h3>		
 			</div> <!-- end row -->
 	
 			<div class="row text-center">
@@ -39,7 +39,7 @@
 				</div>
 
 				<div class="col-xs-4 col-sm-4 col-md-4">
-						<button id="btnKloepommes" class="btn btn-block btn-primary" onclick="add('kloepommes')">
+						<button id="btnKloepommes" class="btn btn-block btn-primary" disabled onclick="add('kloepommes')">
 							<span class="name">Kl&ouml;pfer mit Pommes</span> <span class="amount"></span><br>CHF <span class="price"></span>
 						</button>
 				</div>
@@ -77,24 +77,24 @@
 			
 			</div> <!-- end row -->
 
-			<hr>
 		
 			<div class="row text-center">
-				<div class="col-xs-12">
-					<h4><strong>Total CHF <span id="totalCHF"></span></strong></h4>
-				</div>
 			</div>
 
 			<hr>
 
 			<div class="row text-center">
 
-				<div class="col-xs-6 col-sm-6 col-md-6">
+				<div class="col-xs-4">
+								<h4><strong>Total CHF <br><span id="totalCHF"></span></strong></h4>
+				</div>
+
+				<div class="col-xs-4 col-sm-4 col-md-4">
 						<button class="btn btn-lg btn-block btn-success" onclick="print()">Drucken</button>
 				</div>
 
-				<div class="col-xs-6 col-sm-6 col-md-6">
-						<button class="btn btn-lg btn-block btn-danger" onclick="cancel()">Abbrechen</button>
+				<div class="col-xs-4 col-sm-4 col-md-4">
+						<button class="btn btn-lg btn-block btn-danger" onclick="cancel()">L&ouml;schen</button>
 				</div>
 
 			</div> <!-- end row -->

@@ -16,16 +16,17 @@ var printer = 'hp521dw';
 // PRINT LABEL 
 // =======================================
 function printLabel(file) {
-	var exec = require('child_process').exec;
-	var command = 'lp -d ' + printer + ' /home/pi/pos/prtsrc/zebra/' + file;
+	//var exec = require('child_process').exec;
+	//var command = 'lp -d ' + printer + ' /home/pi/pos/prtsrc/zebra/' + file;
 	
-	exec(command, function(error, stdout, stderr) {
-		if (error !== null) {
-			console.log('exec error: ' + error);
-		} else {
-			console.log('printing /home/pi/pos/prtsrc/' + file);
-		}
-	});
+	//exec(command, function(error, stdout, stderr) {
+	//	if (error !== null) {
+	//		console.log('exec error: ' + error);
+	//	} else {
+	//		console.log('printing /home/pi/pos/prtsrc/' + file);
+	//	}
+	//});
+	console.log('lp -d ' + printer + ' /home/pi/pos/prtsrc/zebra/' + file);
 };
 // =======================================
 // POST Route 
@@ -37,8 +38,7 @@ router.post('/:item/:times', function(req, res, next) {
 		// Bratwurst
 		case "bratwurst":
 			for (var i = 1; i <= req.params['times']; i++) {
-				//printLabel('bratwurst.zpl');
-				printLabel('test.zpl');
+				printLabel('bratwurst.zpl');
 				result += 'print ' + req.params['item'] + '<br>';
 			}
 			break;
