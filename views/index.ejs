@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<!-- <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css" /> -->
+		<link rel="stylesheet" href="/bower_components/metro-bootstrap/dist/css/metro-bootstrap.min.css" />
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+
+		<div class="container">
+
+			<div class="row text-center">
+				<h3><strong>WFVB Grill</strong></h3>		
+			</div> <!-- end row -->
+	
+			<div class="row text-center">
+
+				<div class="col-xs-4 col-sm-4 col-md-4">
+						<button id="btnBratwurst" class="btn btn-block btn-primary" onclick="add('bratwurst')">
+						<span class="name">Bratwurst</span> <span class="amount"></span><br>CHF <span class="price"></span>
+						</button>
+				</div>
+			
+				<div class="col-xs-4 col-sm-4 col-md-4">
+						<button id="btnBratpommes" class="btn btn-block btn-primary" onclick="add('bratpommes')">
+							<span class="name">Bratwurst mit Pommes</span> <span class="amount"></span><br>CHF <span class="price"></span>
+						</button>
+				</div>
+
+	
+				<div class="col-xs-4 col-sm-4 col-md-4">
+						<button id="btnKloepfer" class="btn btn-block btn-primary" onclick="add('kloepfer')">
+							<span class="name">Kl&ouml;pfer</span> <span class="amount"></span><br>CHF <span class="price"></span>
+						</button>
+				</div>
+
+				<div class="col-xs-4 col-sm-4 col-md-4">
+						<button id="btnKloepommes" class="btn btn-block btn-primary" onclick="add('kloepommes')">
+							<span class="name">Kl&ouml;pfer mit Pommes</span> <span class="amount"></span><br>CHF <span class="price"></span>
+						</button>
+				</div>
+
+				<div class="col-xs-4 col-sm-4 col-md-4">
+						<button id="btnSteak" class="btn btn-block btn-primary" onclick="add('steak')">
+							<span class="name">Steak</span> <span class="amount"></span><br>CHF <span class="price"></span>
+						</button>
+				</div>
+
+				<div class="col-xs-4 col-sm-4 col-md-4">
+						<button id="btnMerquez" class="btn btn-block btn-primary" onclick="add('merquez')">
+							<span class="name">Merquez</span> <span class="amount"></span><br>CHF <span class="price"></span>
+						</button>
+				</div>
+
+				<div class="col-xs-4 col-sm-4 col-md-4">
+						<button id="btnWurstsalat" class="btn btn-block btn-primary" onclick="add('wurstsalat')">
+							<span class="name">Wurstsalat</span> <span class="amount"></span><br>CHF <span class="price"></span>
+						</button>
+				</div>
+
+				<div class="col-xs-4 col-sm-4 col-md-4">
+						<button id="btnPommes" class="btn btn-block btn-primary" onclick="add('pommes')">
+							<span class="name">Pommes</span> <span class="amount"></span><br>CHF <span class="price"></span>
+						</button>
+				</div>
+
+				<div class="col-xs-4 col-sm-4 col-md-4">
+						<button id="btnSpaghetti" class="btn btn-block btn-primary" onclick="add('spaghetti')">
+							<span class="name">Spaghetti</span> <span class="amount"></span><br>CHF <span class="price"></span>
+						</button>
+				</div>
+
+			
+			</div> <!-- end row -->
+
+			<hr>
+		
+			<div class="row text-center">
+				<div class="col-xs-12">
+					<h4><strong>Total CHF <span id="totalCHF"></span></strong></h4>
+				</div>
+			</div>
+
+			<hr>
+
+			<div class="row text-center">
+
+				<div class="col-xs-6 col-sm-6 col-md-6">
+						<button class="btn btn-lg btn-block btn-success" onclick="print()">Drucken</button>
+				</div>
+
+				<div class="col-xs-6 col-sm-6 col-md-6">
+						<button class="btn btn-lg btn-block btn-danger" onclick="cancel()">Abbrechen</button>
+				</div>
+
+			</div> <!-- end row -->
+
+		</div> <!-- end container -->
+  
+		<script src="/bower_components/jquery/dist/jquery.min.js"></script>
+		<script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+		<script>
+			
+			// ==============================
+			// Define variables/objects
+			// ==============================
+			var totalCHF = 0.00;
+			var cart = {
+				// EINZELN
+				bratwurst:	{
+					amount:		0,
+					price:		5.5
+				},	
+				kloepfer:		{
+					amount:		0,
+					price:		5.0
+				},
+				merquez:		{
+					amount:		0,
+					price:		6.50
+				},
+				steak:			{
+					amount:		0,
+					price:		8.00
+				},
+				wurstsalat:	{
+					amount:		0,
+					price:		6.00
+				},
+				spaghetti:	{
+					amount:		0,
+					price:		7.50
+				},
+				pommes:			{
+					amount:		0,
+					price:		4.50
+				},
+				// MENU
+				bratpommes:	{
+					amount:		0,
+					price:		12.00
+				},
+				kloepommes:	{
+					amount:		0,
+					price:		11.00
+				},
+				steapommes:	{
+					amount:		0,
+					price:		7.50
+				},
+				wsalpommes:	{
+					amount:		0,
+					price:		7.50
+				}
+			};
+
+			
+			// ==============================
+			// Initial Run On Load
+			// ==============================
+			$(document).ready( function() {
+				initialFunction();
+			});	
+
+			// ==============================
+			// InitialFunction
+			// ==============================
+			function initialFunction() {
+				for (var key in cart) {
+					cart[key].amount = 0;
+					updateLabel('#btn' + key.charAt(0).toUpperCase() + key.substr(1, key.length) + ' .amount', 0);
+					updateLabel('#btn' + key.charAt(0).toUpperCase() + key.substr(1, key.length) + ' .price', parseFloat(cart[key].price).toFixed(2));
+				}
+				totalCHF = 0.00;
+				updateTotalCHF()
+			}
+
+			// ==============================
+			// Add
+			// ==============================
+			function add(item) {
+				cart[item].amount++;
+				totalCHF += cart[item].price;
+				updateLabel('#btn' +  item.charAt(0).toUpperCase() + item.substr(1, item.length) + ' .amount', cart[item].amount);
+				updateTotalCHF();
+			};
+
+			// ==============================
+			// updateLabel
+			// ==============================
+			function updateLabel(lblName, value) {
+				$(lblName).text(value);
+			}
+
+			// ==============================
+			// updateTotalCHF 
+			// ==============================
+			function updateTotalCHF() {
+				$('#totalCHF').text(parseFloat(totalCHF).toFixed(2));
+			}
+
+			// ==============================
+			// Cancel
+			// ==============================
+			function cancel() {
+				initialFunction();
+			};
+
+			// ==============================
+			// Print
+			// ==============================
+			function print() {
+				for (var key in cart) {
+					$.post('/print/' + key + '/' + cart[key].amount);
+				}
+				cancel();
+			};
+		</script>
+	</body>
+</html>
