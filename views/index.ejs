@@ -5,8 +5,19 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
 		<meta name="apple-mobile-web-app-capable" content="yes">
-		<!-- <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css" /> -->
-		<link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css" />
+
+		<link rel="shortcut icon" type="image/vnd.microsoft.icon" href="/images/favicon.ico">
+		<link rel="apple-touch-icon" type="image/png" href="/images/apple-touch-icon-57x57.png">
+		<link rel="apple-touch-icon" type="image/png" sizes="72x72" href="/images/apple-touch-icon-72x72.png">
+		<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="/images/apple-touch-icon-76x76.png">
+		<link rel="apple-touch-icon" type="image/png" sizes="114x114" href="/images/apple-touch-icon-114x114.png">
+		<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="/images/apple-touch-icon-120x120.png">
+		<link rel="apple-touch-icon" type="image/png" sizes="144x144" href="/images/apple-touch-icon-144x144.png">
+		<link rel="apple-touch-icon" type="image/png" sizes="152x152" href="/images/apple-touch-icon-152x152.png">
+		<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="/images/apple-touch-icon-180x180.png">
+		<link rel="icon" type="image/png" href="/images/apple-touch-icon-114x114.png">
+
+		<link rel="stylesheet" href="/bower_components/metro-bootstrap/dist/css/metro-bootstrap.min.css" />
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
@@ -20,61 +31,86 @@
 			<div class="row text-center">
 
 				<div class="col-xs-4 col-sm-4 col-md-4">
-						<button id="btnBratwurst" class="btn btn-block btn-primary" onclick="add('bratwurst')">
-						<span class="name">Bratwurst</span> <span class="amount"></span><br>CHF <span class="price"></span>
-						</button>
-				</div>
-			
-				<div class="col-xs-4 col-sm-4 col-md-4">
-						<button id="btnBratpommes" class="btn btn-block btn-primary" onclick="add('bratpommes')">
-							<span class="name">Bratwurst mit Pommes</span> <span class="amount"></span><br>CHF <span class="price"></span>
+						<button id="btnKloepfer" class="btn btn-block btn-primary" onclick="add('kloepfer')">
+							<span class="name">Kl&ouml;pfer</span>
+							<br>
+							<br>CHF <span class="price"></span>
+							<br><span class="amount"></span>
 						</button>
 				</div>
 
+				<div class="col-xs-4 col-sm-4 col-md-4">
+						<button id="btnBratwurst" class="btn btn-block btn-primary" onclick="add('bratwurst')">
+										<span class="name">Bratwurst</span>
+										<br>
+										<br>CHF <span class="price"></span>
+										<br><span class="amount"></span>
+						</button>
+				</div>
 	
 				<div class="col-xs-4 col-sm-4 col-md-4">
-						<button id="btnKloepfer" class="btn btn-block btn-primary" onclick="add('kloepfer')">
-							<span class="name">Kl&ouml;pfer</span> <span class="amount"></span><br>CHF <span class="price"></span>
-						</button>
-				</div>
-
-				<div class="col-xs-4 col-sm-4 col-md-4">
-						<button id="btnKloepommes" class="btn btn-block btn-primary" disabled onclick="add('kloepommes')">
-							<span class="name">Kl&ouml;pfer mit Pommes</span> <span class="amount"></span><br>CHF <span class="price"></span>
+						<button id="btnMerquez" class="btn btn-block btn-primary" onclick="add('merquez')">
+							<span class="name">Merquez</span>
+							<br>
+							<br>CHF <span class="price"></span>
+							<br><span class="amount"></span>
 						</button>
 				</div>
 
 				<div class="col-xs-4 col-sm-4 col-md-4">
 						<button id="btnSteak" class="btn btn-block btn-primary" onclick="add('steak')">
-							<span class="name">Steak</span> <span class="amount"></span><br>CHF <span class="price"></span>
-						</button>
-				</div>
-
-				<div class="col-xs-4 col-sm-4 col-md-4">
-						<button id="btnMerquez" class="btn btn-block btn-primary" onclick="add('merquez')">
-							<span class="name">Merquez</span> <span class="amount"></span><br>CHF <span class="price"></span>
+							<span class="name">Steak</span>
+							<br>
+							<br>CHF <span class="price"></span>
+							<br><span class="amount"></span>
 						</button>
 				</div>
 
 				<div class="col-xs-4 col-sm-4 col-md-4">
 						<button id="btnWurstsalat" class="btn btn-block btn-primary" onclick="add('wurstsalat')">
-							<span class="name">Wurstsalat</span> <span class="amount"></span><br>CHF <span class="price"></span>
+							<span class="name">Wurstsalat</span>
+							<br>
+							<br>CHF <span class="price"></span>
+							<br><span class="amount"></span>
 						</button>
 				</div>
-
+				
 				<div class="col-xs-4 col-sm-4 col-md-4">
 						<button id="btnPommes" class="btn btn-block btn-primary" onclick="add('pommes')">
-							<span class="name">Pommes</span> <span class="amount"></span><br>CHF <span class="price"></span>
+							<span class="name">Pommes</span>
+							<br>
+							<br>CHF <span class="price"></span>
+							<br><span class="amount"></span>
 						</button>
 				</div>
 
 				<div class="col-xs-4 col-sm-4 col-md-4">
-						<button id="btnSpaghetti" class="btn btn-block btn-primary" onclick="add('spaghetti')">
-							<span class="name">Spaghetti</span> <span class="amount"></span><br>CHF <span class="price"></span>
+						<button id="btnWaldfest" class="btn btn-block btn-primary" disabled onclick="add('waldfest')">
+							<span class="name">Waldfest</span>
+							<br>
+							<br>CHF <span class="price"></span>
+							<br><span class="amount"></span>
 						</button>
 				</div>
 
-			
+				<div class="col-xs-4 col-sm-4 col-md-4">
+						<button id="btnSteapommes" class="btn btn-block btn-primary" onclick="add('steapommes')">
+										<span class="name">Steak
+										<br>Pommes</span>
+										<br>CHF <span class="price"></span>
+										<br><span class="amount"></span>
+						</button>
+				</div>
+
+				<div class="col-xs-4 col-sm-4 col-md-4">
+						<button id="btnWsalpommes" class="btn btn-block btn-primary" onclick="add('wsalpommes')">
+							<span class="name">Wurstsalat
+							<br>Pommes</span>
+							<br>CHF <span class="price"></span>
+							<br><span class="amount"></span>
+						</button>
+				</div>
+
 			</div> <!-- end row -->
 
 		
@@ -127,6 +163,10 @@
 					amount:		0,
 					price:		8.00
 				},
+				waldfest:			{
+					amount:		0,
+					price:		2.50
+				},
 				wurstsalat:	{
 					amount:		0,
 					price:		6.00
@@ -146,15 +186,15 @@
 				},
 				kloepommes:	{
 					amount:		0,
-					price:		11.00
+					price:		9.00
 				},
 				steapommes:	{
 					amount:		0,
-					price:		7.50
+					price:		10.00
 				},
 				wsalpommes:	{
 					amount:		0,
-					price:		7.50
+					price:		8.50
 				}
 			};
 
@@ -174,6 +214,7 @@
 					cart[key].amount = 0;
 					updateLabel('#btn' + key.charAt(0).toUpperCase() + key.substr(1, key.length) + ' .amount', 0);
 					updateLabel('#btn' + key.charAt(0).toUpperCase() + key.substr(1, key.length) + ' .price', parseFloat(cart[key].price).toFixed(2));
+					updateBtnColor('#btn' + key.charAt(0).toUpperCase() + key.substr(1, key.length), 'remove', 'btn-warning');
 				}
 				totalCHF = 0.00;
 				updateTotalCHF()
@@ -187,6 +228,7 @@
 				totalCHF += cart[item].price;
 				updateLabel('#btn' +  item.charAt(0).toUpperCase() + item.substr(1, item.length) + ' .amount', cart[item].amount);
 				updateTotalCHF();
+				updateBtnColor('#btn' +  item.charAt(0).toUpperCase() + item.substr(1, item.length), 'add', 'btn-warning');
 			};
 
 			// ==============================
@@ -194,6 +236,20 @@
 			// ==============================
 			function updateLabel(lblName, value) {
 				$(lblName).text(value);
+			}
+
+			// ==============================
+			// updateBtnColor
+			// ==============================
+			function updateBtnColor(lblName, action, className) {
+				switch(action) {
+					case 'add':
+						$(lblName).addClass('btn-warning');
+						break;
+					case 'remove':
+						$(lblName).removeClass('btn-warning');
+						break;
+				}
 			}
 
 			// ==============================
@@ -220,5 +276,6 @@
 				cancel();
 			};
 		</script>
+
 	</body>
 </html>
