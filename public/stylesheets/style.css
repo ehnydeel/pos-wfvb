@@ -5,9 +5,8 @@ html {
 body {
 	padding-top: 1.5em;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-
 	height: 100%;
-	background-color: lightgrey;
+	background-color: grey;
 }
 
 
@@ -15,8 +14,16 @@ a {
   color: #00B7FF;
 }
 
+h2 {
+	color: #000;
+}
+
 .btn {
 	margin: 5px 0;
+}
+
+.btn-white {
+	background-color: #fff;
 }
 
 .btn-primary {
