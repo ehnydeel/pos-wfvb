@@ -15,8 +15,8 @@
     "tests"
   ],
   "dependencies": {
-    "bootstrap": "^3.3.6",
     "jquery": "^3.1.0",
-    "metro-bootstrap": "*"
+    "metro-bootstrap": "*",
+    "bootstrap": "^3.3.6"
   }
 }

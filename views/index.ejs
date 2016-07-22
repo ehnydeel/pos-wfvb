@@ -28,94 +28,9 @@
 				<h3><strong>WFVB Grillkasse</strong></h3>		
 			</div> <!-- end row -->
 	
-			<div class="row text-center">
+			<div id="cart" class="row text-center">
 
-				<div class="col-xs-4 col-sm-4 col-md-4">
-						<button id="btnKloepfer" class="btn btn-block btn-primary" onclick="add('kloepfer')">
-							<span class="name">Kl&ouml;pfer</span>
-							<br>
-							<br>CHF <span class="price"></span>
-							<br><span class="amount"></span>
-						</button>
-				</div>
-
-				<div class="col-xs-4 col-sm-4 col-md-4">
-						<button id="btnBratwurst" class="btn btn-block btn-primary" onclick="add('bratwurst')">
-										<span class="name">Bratwurst</span>
-										<br>
-										<br>CHF <span class="price"></span>
-										<br><span class="amount"></span>
-						</button>
-				</div>
-	
-				<div class="col-xs-4 col-sm-4 col-md-4">
-						<button id="btnMerquez" class="btn btn-block btn-primary" onclick="add('merquez')">
-							<span class="name">Merquez</span>
-							<br>
-							<br>CHF <span class="price"></span>
-							<br><span class="amount"></span>
-						</button>
-				</div>
-
-				<div class="col-xs-4 col-sm-4 col-md-4">
-						<button id="btnSteak" class="btn btn-block btn-primary" onclick="add('steak')">
-							<span class="name">Steak</span>
-							<br>
-							<br>CHF <span class="price"></span>
-							<br><span class="amount"></span>
-						</button>
-				</div>
-
-				<div class="col-xs-4 col-sm-4 col-md-4">
-						<button id="btnWurstsalat" class="btn btn-block btn-primary" onclick="add('wurstsalat')">
-							<span class="name">Wurstsalat</span>
-							<br>
-							<br>CHF <span class="price"></span>
-							<br><span class="amount"></span>
-						</button>
-				</div>
-				
-				<div class="col-xs-4 col-sm-4 col-md-4">
-						<button id="btnPommes" class="btn btn-block btn-primary" onclick="add('pommes')">
-							<span class="name">Pommes</span>
-							<br>
-							<br>CHF <span class="price"></span>
-							<br><span class="amount"></span>
-						</button>
-				</div>
-
-				<div class="col-xs-4 col-sm-4 col-md-4">
-						<button id="btnWaldfest" class="btn btn-block btn-primary" disabled onclick="add('waldfest')">
-							<span class="name">Waldfest</span>
-							<br>
-							<br>CHF <span class="price"></span>
-							<br><span class="amount"></span>
-						</button>
-				</div>
-
-				<div class="col-xs-4 col-sm-4 col-md-4">
-						<button id="btnSteapommes" class="btn btn-block btn-primary" onclick="add('steapommes')">
-										<span class="name">Steak
-										<br>Pommes</span>
-										<br>CHF <span class="price"></span>
-										<br><span class="amount"></span>
-						</button>
-				</div>
-
-				<div class="col-xs-4 col-sm-4 col-md-4">
-						<button id="btnWsalpommes" class="btn btn-block btn-primary" onclick="add('wsalpommes')">
-							<span class="name">Wurstsalat
-							<br>Pommes</span>
-							<br>CHF <span class="price"></span>
-							<br><span class="amount"></span>
-						</button>
-				</div>
-
-			</div> <!-- end row -->
-
-		
-			<div class="row text-center">
-			</div>
+			</div> <!-- end #cart.row -->
 
 			<hr>
 
@@ -148,63 +63,85 @@
 			var cart = {
 				// EINZELN
 				bratwurst:	{
+					name:			"Bratwurst",
 					amount:		0,
-					price:		6.5
+					price:		6.50
 				},	
 				kloepfer:		{
+					name:			"Kloepfer",
 					amount:		0,
 					price:		5.0
 				},
 				merquez:		{
+					name:			"Merquez",
 					amount:		0,
 					price:		6.50
 				},
-				steak:			{
+				steak:			{	
+					name:			"Steak",
 					amount:		0,
 					price:		8.00
 				},
 				waldfest:			{
+					name:			"Waldfest",
 					amount:		0,
 					price:		2.50
 				},
 				wurstsalat:	{
+					name:			"Wurstsalat",
 					amount:		0,
 					price:		6.00
 				},
 				spaghetti:	{
+					name:			"Spaghetti",
 					amount:		0,
 					price:		7.50
 				},
 				pommes:			{
+					name:			"Pommes",
 					amount:		0,
 					price:		4.50
 				},
 				// MENU
-				bratpommes:	{
-					amount:		0,
-					price:		12.00
-				},
-				kloepommes:	{
-					amount:		0,
-					price:		9.00
-				},
-				steapommes:	{
+				steakpommes:	{
+					name:			"Steak<br>Pommes",
 					amount:		0,
 					price:		10.00
 				},
-				wsalpommes:	{
+				wurstsalatpommes:	{
+					name:			"Wurstsalat<br>Pommes",
 					amount:		0,
 					price:		8.50
 				}
 			};
 
-			
 			// ==============================
 			// Initial Run On Load
 			// ==============================
 			$(document).ready( function() {
+				generateHTMLBlocks();
 				initialFunction();
 			});	
+
+			// ==============================
+			// Generate HTML-Block
+			// ==============================
+			function generateHTMLBlocks() {
+				for (var key in cart) {
+					var result = '';
+					result += '<div class="col-xs-4 col-sm-4 col-md-4"> ';
+					result +=		'<button id="btn' + key.charAt(0).toUpperCase() + key.substr(1, key.length) + '" class="btn btn-block btn-primary" onclick="add(\'' + key + '\')">';
+					result +=			'<span class="name"><strong>' + cart[key].name + '</strong></span>';
+					if (cart[key].name.indexOf('<br>') == -1) {
+					result +=			'<br>';
+					}
+					result +=			'<br>CHF <span class="price">' + parseFloat(cart[key].price).toFixed(2) + '</span>';
+					result +=			'<br><span class="amount">' + cart[key].amount + '</span>';
+					result +=		'</button>';
+					result +=	'</div>';
+					$('#cart').append(result);
+				}
+			}
 
 			// ==============================
 			// InitialFunction
