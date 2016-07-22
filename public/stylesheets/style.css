@@ -1,21 +1,28 @@
+/** public/stylesheets/style.css **/
+
 html {
 	height: 100%;
 }
 
 body {
-	padding-top: 1.5em;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 	height: 100%;
 	background-color: grey;
 }
 
+#title {
+	margin-top: 0;
+	margin-bottom: 1em;
+	padding: 0.5em;
+	background-color: #000;
+}
 
 a {
   color: #00B7FF;
 }
 
 h2 {
-	color: #000;
+	color: #fff;
 }
 
 .btn {
@@ -37,5 +44,3 @@ h2 {
 	background-color: #f1c40f;
 	border-color: #f1c40f;
 }
-
-

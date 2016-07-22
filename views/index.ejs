@@ -17,6 +17,7 @@
 		<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="/images/apple-touch-icon-180x180.png">
 		<link rel="icon" type="image/png" href="/images/apple-touch-icon-114x114.png">
 
+		<link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css" />
 		<link rel="stylesheet" href="/bower_components/metro-bootstrap/dist/css/metro-bootstrap.min.css" />
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
@@ -24,30 +25,28 @@
 
 		<div class="container">
 
-			<div class="row text-center">
-				<h2><strong>WFVB Grillkasse</strong></h2>		
+			<div id="title" class="row text-center">
+				<h2><strong>WFVB GRILLKASSE</strong></h2>
 			</div> <!-- end row -->
 	
 			<div id="cart" class="row text-center">
-
 			</div> <!-- end #cart.row -->
 
 			<hr>
 
 			<div class="row text-center">
-
-				<div class="col-xs-4">
-					<h4 style="color: white;"><strong>Total CHF <br><span id="totalCHF"></span></strong></h4>
+				<!-- TotalCHF -->
+				<div class="col-xs-6">
+					<button class="btn btn-lg btn-block btn-white"><strong>CHF <span id="totalCHF"></span></strong></button>
 				</div>
-
-				<div class="col-xs-4 col-sm-4 col-md-4">
-						<button class="btn btn-lg btn-block btn-success" onclick="print()">Drucken</button>
+				<!-- PrintButton -->
+				<div class="col-xs-3 col-sm-3 col-md-3">
+						<button class="btn btn-lg btn-block btn-success" onclick="print()"><span class="glyphicon glyphicon-print"></span></button>
 				</div>
-
-				<div class="col-xs-4 col-sm-4 col-md-4">
-						<button class="btn btn-lg btn-block btn-danger" onclick="cancel()">L&ouml;schen</button>
+				<!-- CancelButton -->
+				<div class="col-xs-3 col-sm-3 col-md-3">
+						<button class="btn btn-lg btn-block btn-danger" onclick="cancel()"><span class="glyphicon glyphicon-remove"</span></button>
 				</div>
-
 			</div> <!-- end row -->
 
 		</div> <!-- end container -->
@@ -55,63 +54,72 @@
 		<script src="/bower_components/jquery/dist/jquery.min.js"></script>
 		<script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 		<script>
-			
 			// ==============================
 			// Define variables/objects
 			// ==============================
 			var totalCHF = 0.00;
 			var cart = {
-				// EINZELN
+				// Einzeln
 				bratwurst:	{
-					name:			"Bratwurst",
-					amount:		0,
-					price:		6.50
+					name:				"Bratwurst",
+					amount:			0,
+					price:			6.50,
+					available: 	true
 				},	
 				kloepfer:		{
-					name:			"Kloepfer",
-					amount:		0,
-					price:		5.0
+					name:				"Kl&ouml;pfer",
+					amount:			0,
+					price:			5.0,
+					available: 	true
 				},
 				merquez:		{
-					name:			"Merquez",
-					amount:		0,
-					price:		6.50
+					name:				"Merquez",
+					amount:			0,
+					price:			6.50,
+					available: 	true
 				},
 				steak:			{	
-					name:			"Steak",
-					amount:		0,
-					price:		8.00
+					name:				"Steak",
+					amount:			0,
+					price:			8.00,
+					available: 	true
 				},
 				waldfest:			{
-					name:			"Waldfest",
-					amount:		0,
-					price:		2.50
+					name:				"Waldfest",
+					amount:			0,
+					price:			2.50,
+					available: 	true
 				},
 				wurstsalat:	{
-					name:			"Wurstsalat",
-					amount:		0,
-					price:		6.00
+					name:				"Wurstsalat",
+					amount:			0,
+					price:			6.00,
+					available: 	true
 				},
 				spaghetti:	{
-					name:			"Spaghetti",
-					amount:		0,
-					price:		7.50
+					name:				"Spaghetti",
+					amount:			0,
+					price:			7.50,
+					available: 	true
 				},
 				pommes:			{
-					name:			"Pommes",
-					amount:		0,
-					price:		4.50
+					name:				"Pommes",
+					amount:			0,
+					price:			4.50,
+					available: 	true
 				},
 				// MENU
 				steakpommes:	{
-					name:			"Steak<br>Pommes",
-					amount:		0,
-					price:		10.00
+					name:				"Steak<br>Pommes",
+					amount:			0,
+					price:			10.00,
+					available: 	true
 				},
 				wurstsalatpommes:	{
-					name:			"Wurstsalat<br>Pommes",
-					amount:		0,
-					price:		8.50
+					name:				"Wurstsalat<br>Pommes",
+					amount:			0,
+					price:			8.50,
+					available:	true	
 				}
 			};
 
@@ -141,7 +149,7 @@
 					result +=	'</div>';
 					$('#cart').append(result);
 				}
-			}
+			};
 
 			// ==============================
 			// InitialFunction
@@ -152,10 +160,15 @@
 					updateLabel('#btn' + key.charAt(0).toUpperCase() + key.substr(1, key.length) + ' .amount', 0);
 					updateLabel('#btn' + key.charAt(0).toUpperCase() + key.substr(1, key.length) + ' .price', parseFloat(cart[key].price).toFixed(2));
 					updateBtnColor('#btn' + key.charAt(0).toUpperCase() + key.substr(1, key.length), 'remove', 'btn-warning');
+					
+					if (cart[key].available == false) {
+						$('#btn' + key.charAt(0).toUpperCase() + key.substr(1, key.length)).attr('disabled', true);
+					}
+					
 				}
 				totalCHF = 0.00;
 				updateTotalCHF()
-			}
+			};
 
 			// ==============================
 			// Add
@@ -173,7 +186,7 @@
 			// ==============================
 			function updateLabel(lblName, value) {
 				$(lblName).text(value);
-			}
+			};
 
 			// ==============================
 			// updateBtnColor
@@ -187,7 +200,7 @@
 						$(lblName).removeClass('btn-warning');
 						break;
 				}
-			}
+			};
 
 			// ==============================
 			// updateTotalCHF 
