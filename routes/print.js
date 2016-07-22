@@ -33,36 +33,11 @@ function printLabel(file) {
 // =======================================
 router.post('/:item/:times', function(req, res, next) {
 	var result = '';
-	switch(req.params['item']) {
-		
-		// Bratwurst
-		case "bratwurst":
-			for (var i = 1; i <= req.params['times']; i++) {
-				printLabel('bratwurst.pdf');
-				result += 'print ' + req.params['item'] + '<br>';
-			}
-			break;
 
-		// Kloepfer
-		case "kloepfer":
-			for (var i = 1; i <= req.params['times']; i++) {
-				printLabel('kloepfer.pdf');
-				result += 'print ' + req.params['item'] + '<br>';
-			}
-			break;
-		case "steak":
-			for (var i = 1; i <= req.params['times']; i++) {
-				printLabel('steakmitbrot.pdf');
-				result += 'print ' + req.params['item'] + '<br>';
-			}
-			break;
-		case "steapommes":
-			for (var i = 1; i <= req.params['times']; i++) {
-				printLabel('steakmitpommes.pdf');
-				result += 'print ' + req.params['item'] + '<br>';
-			}
-			break;
-	};
+	for (var i = 1; i <= req.params['times']; i++) {
+		printLabel(req.params['item'] + '.pdf');
+		result += 'print ' + req.params['item'] + '<br>';
+	}
 
 	// Send result to browser
 	res.send(result);
