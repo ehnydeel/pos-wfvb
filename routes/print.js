@@ -10,36 +10,32 @@ var router = express.Router();
 // Configuration 
 // =======================================
 // Avaiable printers: gk420, hp521dw
-var printer = '720nw';
+var printer = '/dev/usb/lp0';
 
 // =======================================
 // PRINT LABEL 
 // =======================================
 function printLabel(file) {
-	var exec = require('child_process').exec;
-	var command = 'lp -d ' + printer + ' /home/pi/pos/prtsrc/brother/' + file + ' -o landscape';
+	var exec = require('child_process').execSync;
+	var options =  ' -o Collate=True -o landscape -o ppi=75 -o media=custom_28.96';
+	var command = 'ql720nw ' + printer + ' n ' + '/home/pi/pos/prtsrc/brother/' + file;
 	
 	exec(command, function(error, stdout, stderr) {
 		if (error !== null) {
 			console.log('exec error: ' + error);
 		} else {
-			console.log('printing /home/pi/pos/prtsrc/brother/' + file);
+			console.log('printing /home/pi/pos/prtsrc/brother/' + file + options);
 		}
 	});
-	console.log('lp -d ' + printer + ' /home/pi/pos/prtsrc/brother/' + file);
 };
 // =======================================
 // POST Route 
 // =======================================
 router.post('/:item/:times', function(req, res, next) {
 	var result = '';
-
 	for (var i = 1; i <= req.params['times']; i++) {
-		printLabel(req.params['item'] + '.pdf');
-		result += 'print ' + req.params['item'] + '<br>';
+		printLabel(req.params['item'] + ".png");
 	}
-
-	// Send result to browser
 	res.send(result);
 });
 

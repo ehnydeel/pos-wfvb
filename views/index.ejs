@@ -25,7 +25,7 @@
 		<div class="container">
 
 			<div class="row text-center">
-				<h3><strong>WFVB Grillkasse</strong></h3>		
+				<h2><strong>WFVB Grillkasse</strong></h2>		
 			</div> <!-- end row -->
 	
 			<div id="cart" class="row text-center">
@@ -124,7 +124,7 @@
 			});	
 
 			// ==============================
-			// Generate HTML-Block
+			// Generate HTML-Blocks
 			// ==============================
 			function generateHTMLBlocks() {
 				for (var key in cart) {
@@ -208,7 +208,9 @@
 			// ==============================
 			function print() {
 				for (var key in cart) {
-					$.post('/print/' + key + '/' + cart[key].amount);
+					if (cart[key].amount > 0) {
+						$.post('/print/' + key + '/' + cart[key].amount);
+					}
 				}
 				cancel();
 			};

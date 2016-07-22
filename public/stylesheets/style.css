@@ -23,3 +23,12 @@ a {
 	white-space: normal;
 	height: 100px;
 }
+
+.btn-warning:focus,
+.btn-warning:active,
+.btn-warning:hover {
+	background-color: #f1c40f;
+	border-color: #f1c40f;
+}
+
+
