@@ -1,4 +1,3 @@
-var cart =
 {
   "bratwurst":  {
     "name":       "Bratwurst",
@@ -60,4 +59,4 @@ var cart =
     "price":      8.50,
     "available":  true
   }
-};
+}

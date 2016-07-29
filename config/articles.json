@@ -1,6 +1,6 @@
-{
-	"bratwurst": {
-		"name":				"Bratwurst",
+{"articles": {
+  "bratwurst":  {
+    "name":       "Bratwurst",
     "amount":     0,
     "price":      6.50,
     "available":  true
@@ -60,4 +60,4 @@
     "available":  true
   }
 }
-
+}
