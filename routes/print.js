@@ -9,8 +9,10 @@ var router = express.Router();
 // =======================================
 // Configuration 
 // =======================================
-// Avaiable printers: gk420, hp521dw
+// Avaiable printers (default /dev/usb/lp0)
 var printer = '/dev/usb/lp0';
+// Format (n=29mm, w=54mm)
+var pageSize  = 'w'
 
 // =======================================
 // PRINT LABEL 
@@ -18,13 +20,13 @@ var printer = '/dev/usb/lp0';
 function printLabel(file) {
 	var exec = require('child_process').execSync;
 	var options =  ' -o Collate=True -o landscape -o ppi=75 -o media=custom_28.96';
-	var command = 'ql720nw ' + printer + ' n ' + '/home/pi/pos/prtsrc/brother/' + file;
+	var command = 'ql720nw ' + printer + ' ' + pageSize + ' /home/pi/pos/prtsrc/brother/' + pageSize + '/' + file;
 	
 	exec(command, function(error, stdout, stderr) {
 		if (error !== null) {
 			console.log('exec error: ' + error);
 		} else {
-			console.log('printing /home/pi/pos/prtsrc/brother/' + file + options);
+			console.log('printing /home/pi/pos/prtsrc/brother/' + pageSize + '/' + file + options);
 		}
 	});
 };
