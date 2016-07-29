@@ -16,7 +16,6 @@
   ],
   "dependencies": {
     "jquery": "^3.1.0",
-    "metro-bootstrap": "*",
     "bootstrap": "^3.3.6"
   }
 }

@@ -18,19 +18,20 @@
 		<link rel="icon" type="image/png" href="/images/apple-touch-icon-114x114.png">
 
 		<link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css" />
-		<link rel="stylesheet" href="/bower_components/metro-bootstrap/dist/css/metro-bootstrap.min.css" />
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
 
-		<div class="container">
-
+		<div id="wrapper" class="container-fluid">
 			<div id="title" class="row text-center">
 				<h2><strong>WFVB GRILLKASSE</strong></h2>
 			</div> <!-- end row -->
-	
-			<div id="cart" class="row text-center">
-			</div> <!-- end #cart.row -->
+		</div>
+
+		<div id="wrapper" class="container">
+
+			<div id="cartSection" class="row text-center">
+			</div> <!-- end #cartSection.row -->
 
 			<hr>
 
@@ -58,69 +59,67 @@
 			// Define variables/objects
 			// ==============================
 			var totalCHF = 0.00;
-			var cart = {
-				// Einzeln
-				bratwurst:	{
-					name:				"Bratwurst",
-					amount:			0,
-					price:			6.50,
-					available: 	true
-				},	
-				kloepfer:		{
-					name:				"Kl&ouml;pfer",
-					amount:			0,
-					price:			5.0,
-					available: 	true
-				},
-				merquez:		{
-					name:				"Merquez",
-					amount:			0,
-					price:			6.50,
-					available: 	true
-				},
-				steak:			{	
-					name:				"Steak",
-					amount:			0,
-					price:			8.00,
-					available: 	true
-				},
-				waldfest:			{
-					name:				"Waldfest",
-					amount:			0,
-					price:			2.50,
-					available: 	true
-				},
-				wurstsalat:	{
-					name:				"Wurstsalat",
-					amount:			0,
-					price:			6.00,
-					available: 	true
-				},
-				spaghetti:	{
-					name:				"Spaghetti",
-					amount:			0,
-					price:			7.50,
-					available: 	true
-				},
-				pommes:			{
-					name:				"Pommes",
-					amount:			0,
-					price:			4.50,
-					available: 	true
-				},
-				// MENU
-				steakpommes:	{
-					name:				"Steak<br>Pommes",
-					amount:			0,
-					price:			10.00,
-					available: 	true
-				},
-				wurstsalatpommes:	{
-					name:				"Wurstsalat<br>Pommes",
-					amount:			0,
-					price:			8.50,
-					available:	true	
-				}
+			var articles = {
+				"bratwurst":  {
+    			"name":       "Bratwurst",
+    			"amount":     0,
+    			"price":      5.50,
+    			"available":  true
+  			},
+  			"kloepfer": {
+    			"name":       "Kl&ouml;pfer",
+    			"amount":     0,
+    			"price":      4.50,
+    			"available":  true
+  			},
+  			"merquez":  {
+    			"name":       "Merquez",
+    			"amount":     0,
+    			"price":      3.50,
+    			"available":  true
+  			},
+  			"steak":  {
+    			"name":       "Steak",
+    			"amount":     0,
+    			"price":      9.50,
+    			"available":  true
+  			},
+  			"waldfest": {
+    			"name":       "Waldfest",
+    			"amount":     0,
+    			"price":      4.00,
+    			"available":  true
+  			},
+  			"wurstsalat": {
+    			"name":       "Wurstsalat",
+    			"amount":     0,
+    			"price":      8.00,
+    			"available":  true
+  			},
+  			"spaghetti":  {
+    			"name":       "Spaghetti",
+    			"amount":     0,
+    			"price":      10.00,
+    			"available":  true
+  			},
+  			"pommes":     {
+    			"name":       "Pommes",
+    			"amount":     0,
+    			"price":      4.50,
+    			"available":  true
+  			},
+  			"steakpommes":  {
+    			"name":       "Steak<br>Pommes",
+    			"amount":     0,
+    			"price":      13.00,
+    			"available":  true
+  			},
+  			"wurstsalatpommes": {
+    			"name":       "Wurstsalat<br>Pommes",
+    			"amount":     0,
+    			"price":      12.00,
+    			"available":	true 
+  			}
 			};
 
 			// ==============================
@@ -135,19 +134,19 @@
 			// Generate HTML-Blocks
 			// ==============================
 			function generateHTMLBlocks() {
-				for (var key in cart) {
+				for (var key in articles) {
 					var result = '';
 					result += '<div class="col-xs-4 col-sm-4 col-md-4"> ';
 					result +=		'<button id="btn' + key.charAt(0).toUpperCase() + key.substr(1, key.length) + '" class="btn btn-block btn-primary" onclick="add(\'' + key + '\')">';
-					result +=			'<span class="name"><strong>' + cart[key].name + '</strong></span>';
-					if (cart[key].name.indexOf('<br>') == -1) {
+					result +=			'<span class="name"><strong>' + articles[key].name + '</strong></span>';
+					if (articles[key].name.indexOf('<br>') == -1) {
 					result +=			'<br>';
 					}
-					result +=			'<br>CHF <span class="price">' + parseFloat(cart[key].price).toFixed(2) + '</span>';
-					result +=			'<br><span class="amount">' + cart[key].amount + '</span>';
+					result +=			'<br>CHF <span class="price">' + parseFloat(articles[key].price).toFixed(2) + '</span>';
+					result +=			'<br><span class="amount">' + articles[key].amount + '</span>';
 					result +=		'</button>';
 					result +=	'</div>';
-					$('#cart').append(result);
+					$('#cartSection').append(result);
 				}
 			};
 
@@ -155,13 +154,13 @@
 			// InitialFunction
 			// ==============================
 			function initialFunction() {
-				for (var key in cart) {
-					cart[key].amount = 0;
+				for (var key in articles) {
+					articles[key].amount = 0;
 					updateLabel('#btn' + key.charAt(0).toUpperCase() + key.substr(1, key.length) + ' .amount', 0);
-					updateLabel('#btn' + key.charAt(0).toUpperCase() + key.substr(1, key.length) + ' .price', parseFloat(cart[key].price).toFixed(2));
+					updateLabel('#btn' + key.charAt(0).toUpperCase() + key.substr(1, key.length) + ' .price', parseFloat(articles[key].price).toFixed(2));
 					updateBtnColor('#btn' + key.charAt(0).toUpperCase() + key.substr(1, key.length), 'remove', 'btn-warning');
 					
-					if (cart[key].available == false) {
+					if (articles[key].available == false) {
 						$('#btn' + key.charAt(0).toUpperCase() + key.substr(1, key.length)).attr('disabled', true);
 					}
 					
@@ -174,9 +173,9 @@
 			// Add
 			// ==============================
 			function add(item) {
-				cart[item].amount++;
-				totalCHF += cart[item].price;
-				updateLabel('#btn' +  item.charAt(0).toUpperCase() + item.substr(1, item.length) + ' .amount', cart[item].amount);
+				articles[item].amount++;
+				totalCHF += articles[item].price;
+				updateLabel('#btn' +  item.charAt(0).toUpperCase() + item.substr(1, item.length) + ' .amount', articles[item].amount);
 				updateTotalCHF();
 				updateBtnColor('#btn' +  item.charAt(0).toUpperCase() + item.substr(1, item.length), 'add', 'btn-warning');
 			};
@@ -220,9 +219,9 @@
 			// Print
 			// ==============================
 			function print() {
-				for (var key in cart) {
-					if (cart[key].amount > 0) {
-						$.post('/print/' + key + '/' + cart[key].amount);
+				for (var key in articles) {
+					if (articles[key].amount > 0) {
+						$.post('/print/' + key + '/' + articles[key].amount);
 					}
 				}
 				cancel();

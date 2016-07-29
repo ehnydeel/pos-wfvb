@@ -27,6 +27,10 @@ h2 {
 
 .btn {
 	margin: 5px 0;
+	/* Disable all rounded corners */
+  border-radius:                    0px;
+  -webkit-border-radius:            0px;
+  -moz-border-radius:               0px;
 }
 
 .btn-white {
