@@ -1,7 +1,6 @@
-var cart =
 {
-  "bratwurst":  {
-    "name":       "Bratwurst",
+	"bratwurst": {
+		"name":				"Bratwurst",
     "amount":     0,
     "price":      6.50,
     "available":  true
@@ -60,4 +59,5 @@ var cart =
     "price":      8.50,
     "available":  true
   }
-};
+}
+
