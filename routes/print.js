@@ -46,10 +46,10 @@ router.post('/:item/:times', function(req, res, next) {
 // =======================================
 // POST Route Testpage
 // =======================================
-router.get('/testpage', function(req, res, next) {
+router.get('/testpage/:printer', function(req, res, next) {
 	var exec = require('child_process').execSync;
 	var options =  ' -o Collate=True -o landscape -o media=54x1';
-	var command = 'lp -d 720nw /usr/share/cups/data/testprint ' + options;
+	var command = 'lp -d ' + req.params['printer'] + ' /usr/share/cups/data/testprint ' + options;
 	
 	exec(command, function(error, stdout, stderr) {
 		if (error !== null) {
