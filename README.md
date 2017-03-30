@@ -107,10 +107,10 @@ source: https://jankarres.de/2015/06/raspberry-pi-wlan-access-point-einrichten/
 		To to this permanently, so it automatically starts at boot we
 		have to add following lines to /etc/rc.local right before "exit 0"
 			sudo ifconfig wlan1 10.11.12.1 netmask 255.255.255.0 && sudo /etc/init.d/isc-dhcp-server restart
-			iptables -A FORWARD -o eth0 -i wlan1 -m conntrack --ctstate NEW -j ACCEPT
+			iptables -A FORWARD -o wlan0 -i wlan1 -m conntrack --ctstate NEW -j ACCEPT
 			iptables -A FORWARD -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
 			iptables -t nat -F POSTROUTING
-			iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+			iptables -t nat -A POSTROUTING -o wlan0 -j MASQUERADE
 	- reboot the system!
 			sudo reboot
 	- NOW THE ACCESSPOINT SHOULD WORK CORRECT!
