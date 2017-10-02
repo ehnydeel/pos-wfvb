@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/ehnydeel/pos-wfvb.svg?branch=master)](https://travis-ci.org/ehnydeel/pos-wfvb)
+
 ## POS WFVB
 ### A Ticket-Printing-System for WFVB
 
